@@ -40,7 +40,7 @@ h1{
     color: #75B79E;
 }
 
-.container {
+.gameplan {
     width: 100%;
     height: auto;
     /* display: flex;
@@ -53,26 +53,53 @@ h1{
 
 ul {
     display: flex;
-    /* flex-direction: row; */
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
-li {
+.container {
     width: 117px;
     height: 146px;
+    perspective: 1000px;
     background: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
     margin-top: 34px;
+    cursor: pointer;
 }
 
-li img {
+.container:hover .card{
+    transform: rotateY(180deg);
+}
+
+.container img {
     width: 100px;
     height: 100px;
     margin: 24px 10px 22px 7px;
-    /* background: red; */
 }
+
+.card {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    position: relative;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.card-back{
+    transform: rotateY(180deg);
+}
+
+#switch:checked ~ .container .card {
+    transform: rotateY(180deg);
+  }
 
 .break {
     flex-basis: 100%;
